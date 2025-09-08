@@ -1,4 +1,16 @@
+// Hooks / Node modules / Styles
 import { NavLink } from "react-router-dom";
+
+// Reducers / Actions
+
+// Utils / Functions
+
+// Components
+
+// Sub-Components
+import CustomBrand from "./custom-brand/CustomBrand";
+
+// Data / Images / Icons
 
 const menuItems = [
   { name: "Home", path: "/" },
@@ -9,15 +21,15 @@ const menuItems = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-60 bg-gray-800 flex flex-col p-4 space-y-4">
-      <h1 className="text-2xl font-bold mb-6">Launcher</h1>
+    <aside className="w-[400px] egl-bg-md flex flex-col border-r border-secondary-800/60">
+      <CustomBrand />
       {menuItems.map((item) => (
         <NavLink
           key={item.path}
           to={item.path}
           className={({ isActive }) =>
-            `px-4 py-2 rounded hover:bg-gray-700 ${
-              isActive ? "bg-gray-700" : ""
+            `px-4 py-4 hover:bg-secondary-800/40 ${
+              isActive ? "bg-secondary-800/30" : ""
             }`
           }
         >

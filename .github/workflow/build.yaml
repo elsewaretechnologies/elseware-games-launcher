@@ -1,0 +1,43 @@
+name: Build Elseware Game Launcher
+
+on:
+  push:
+    tags:
+      - "v*.*.*"   # e.g. v1.0.0 → builds release
+  workflow_dispatch: # allow manual run
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build frontend (Vite)
+        run: npm run build:react
+        # make sure "build:react" just runs vite build
+        # and "build" runs electron-builder
+
+      - name: Build Electron App
+        run: npx electron-builder --$RUNNER_OS --publish never
+        env:
+          RUNNER_OS: ${{ matrix.os == 'macos-latest' && 'mac' || (matrix.os == 'windows-latest' && 'win' || 'linux') }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ runner.os }}-binaries
+          path: packages/
