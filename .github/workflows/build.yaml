@@ -26,10 +26,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build frontend (Vite)
-        run: npm run build:react
-        # make sure "build:react" just runs vite build
-        # and "build" runs electron-builder
+      - name: Build frontend (Vite + Electron)
+        run: npm run build
 
       - name: Build Electron App
         run: npx electron-builder --$RUNNER_OS --publish never
