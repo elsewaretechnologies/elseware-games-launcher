@@ -1,6 +1,6 @@
 {
   "name": "elseware-games-launcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "elseware games launcher",
   "main": "electron/main.js",
   "scripts": {
