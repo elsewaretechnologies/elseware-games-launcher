@@ -1,6 +1,6 @@
 {
   "name": "elseware-games-launcher",
-  "version": "1.0.4",
+  "version": "1.0.3",
   "description": "elseware games launcher",
   "main": "electron/main.js",
   "scripts": {
@@ -8,39 +8,8 @@
     "electron:dev": "wait-on http://localhost:5173 && electron .",
     "build:react": "vite build",
     "build:electron": "electron-builder --dir -c.extraMetadata.version=$npm_package_version",
-    "build": "npm run build:react && npm run build:electron",
+    "build": "vite build && electron-builder",
     "start": "electron ."
-  },
-  "build": {
-    "appId": "com.elsewaregames.launcher",
-    "productName": "Elseware Games Launcher",
-    "directories": {
-      "output": "packages"
-    },
-    "files": [
-      "dist/**/*",
-      "main.js",
-      "preload.js",
-      "package.json"
-    ],
-    "mac": {
-      "target": [
-        "dmg",
-        "zip"
-      ]
-    },
-    "win": {
-      "target": [
-        "nsis",
-        "zip"
-      ]
-    },
-    "linux": {
-      "target": [
-        "AppImage",
-        "deb"
-      ]
-    }
   },
   "author": "",
   "license": "ISC",
