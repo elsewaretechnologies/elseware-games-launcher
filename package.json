@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "concurrently \"vite\" \"cross-env NODE_ENV=development npm run electron:dev\"",
     "electron:dev": "wait-on http://localhost:5173 && electron .",
-    "build": "vite build && electron-builder",
     "build:react": "vite build",
+    "build:electron": "electron-builder --dir -c.extraMetadata.version=$npm_package_version",
+    "build": "npm run build:react && npm run build:electron",
     "start": "electron ."
   },
   "build": {

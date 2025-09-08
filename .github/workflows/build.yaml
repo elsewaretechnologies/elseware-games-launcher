@@ -3,7 +3,7 @@ name: Build Elseware Game Launcher
 on:
   push:
     tags:
-      - "v*.*.*"   # e.g. v1.0.0 → builds release
+      - "v*.*.*" # e.g. v1.0.0 → builds release
   workflow_dispatch: # allow manual run
 
 jobs:
@@ -26,16 +26,27 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # 1. Build React frontend
       - name: Build frontend (Vite)
         run: npm run build:react
 
+      # 2. Package Electron app
       - name: Build Electron App
-        run: npx electron-builder --$RUNNER_OS --publish never
+        run: npm run build:electron
         env:
-          RUNNER_OS: ${{ matrix.os == 'macos-latest' && 'mac' || (matrix.os == 'windows-latest' && 'win' || 'linux') }}
+          # ensure electron-builder knows the target
+          CSC_IDENTITY_AUTO_DISCOVERY: false
 
+      # 3. Move builds into packages/{os}/
+      - name: Organize build artifacts
+        run: |
+          mkdir -p packages/${{ runner.os }}
+          mv dist/* packages/${{ runner.os }}/ || true
+          mv release/* packages/${{ runner.os }}/ || true
+
+      # 4. Upload builds
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ runner.os }}-binaries
-          path: packages/
+          path: packages/${{ runner.os }}
