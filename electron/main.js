@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
 const url = require("url");
 
@@ -7,12 +7,16 @@ function createWindow() {
     width: 1000,
     height: 700,
     fullscreenable: true,
-    resizable: true, // ❌ prevents resizing
+    resizable: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
   });
 
+  // enforce minimum size
+  win.setMinimumSize(1000, 700);
+
+  // Load app content
   if (process.env.NODE_ENV === "development") {
     win.loadURL("http://localhost:5173");
     win.webContents.openDevTools(); // optional: auto-open devtools
@@ -26,6 +30,12 @@ function createWindow() {
       })
     );
   }
+
+  // Disable default menu bar
+  Menu.setApplicationMenu(null);
+
+  // (optional) Hide the menu bar in Windows/Linux
+  win.setMenuBarVisibility(false);
 }
 
 app.whenReady().then(() => {

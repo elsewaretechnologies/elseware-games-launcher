@@ -56,3 +56,16 @@
     @apply border-dark-400/50;
   }
 }
+
+/* Custom CSS */
+
+/* Disable text & image selection globally */
+* {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+input, textarea {
+  user-select: text;
+}
+
