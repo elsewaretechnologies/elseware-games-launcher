@@ -1,11 +1,13 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
+const url = require("url");
 
 function createWindow() {
   const win = new BrowserWindow({
     width: 1000,
     height: 700,
-    resizable: false,     // ❌ prevents resizing
+    fullscreenable: true,
+    resizable: true, // ❌ prevents resizing
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
@@ -15,7 +17,14 @@ function createWindow() {
     win.loadURL("http://localhost:5173");
     win.webContents.openDevTools(); // optional: auto-open devtools
   } else {
-    win.loadFile(path.join(__dirname, "../dist/index.html"));
+    const indexPath = path.join(__dirname, "..", "dist", "index.html");
+    win.loadURL(
+      url.format({
+        pathname: indexPath,
+        protocol: "file:",
+        slashes: true,
+      })
+    );
   }
 }
 

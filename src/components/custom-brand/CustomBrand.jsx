@@ -20,7 +20,7 @@ return (
     <img
         src={elsewaregames_hz_textonly}
         alt="Elseware Games"
-        className="w-full max-w-xs h-auto object-contain px-5"
+        className="w-full max-w-xs h-[100px] object-contain"
         style={{ display: "block" }}
     />
 );

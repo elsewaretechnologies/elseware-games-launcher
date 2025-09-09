@@ -21,14 +21,15 @@ const menuItems = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-[400px] egl-bg-md flex flex-col border-r border-secondary-800/60">
+    <aside className="h-full fixed w-[300px] egl-bg-md border-r border-r-secondary-800/0">
       <CustomBrand />
-      {menuItems.map((item) => (
+      <div className="flex flex-col">
+        {menuItems.map((item) => (
         <NavLink
           key={item.path}
           to={item.path}
           className={({ isActive }) =>
-            `px-4 py-4 hover:bg-secondary-800/40 ${
+            `px-4 py-5 hover:bg-secondary-800/40 ${
               isActive ? "bg-secondary-800/30" : ""
             }`
           }
@@ -36,6 +37,7 @@ export default function Sidebar() {
           {item.name}
         </NavLink>
       ))}
+      </div>
     </aside>
   );
 }

@@ -1,0 +1,26 @@
+appId: com.elsewaregames.launcher
+productName: elseware Games Launcher   # Shown in macOS Applications and window title
+
+files:
+  - dist/**
+  - electron/**
+  - package.json
+
+directories:
+  buildResources: build
+  output: packages
+
+mac:
+  target:
+    - dmg
+  artifactName: "elseware-games-launcher-${version}.${ext}"  # produces elseware-games-launcher-1.0.0.dmg
+
+win:
+  target:
+    - nsis
+  artifactName: "elseware-games-launcher-${version}-setup.${ext}"  # e.g., elseware-games-launcher-1.0.0-setup.exe
+
+linux:
+  target:
+    - AppImage
+  artifactName: "elseware-games-launcher-${version}.${ext}"  # e.g., elseware-games-launcher-1.0.0.AppImage

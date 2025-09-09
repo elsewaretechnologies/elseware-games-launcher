@@ -1,7 +1,7 @@
 {
   "name": "elseware-games-launcher",
   "version": "1.0.5",
-  "description": "elseware games launcher",
+  "description": "Official game launcher of elseware Games",
   "main": "electron/main.js",
   "scripts": {
     "dev": "concurrently \"vite\" \"cross-env NODE_ENV=development npm run electron:dev\"",
@@ -28,6 +28,7 @@
     "elseware-ui": "^2.12.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^7.8.2"
   }
 }
