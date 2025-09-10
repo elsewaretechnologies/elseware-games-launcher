@@ -5,7 +5,7 @@
 // Utils / Functions
 
 // Components
-import DefaultLayout from "../layout/DefaultLayout";
+import DefaultLayout from "../../layout/DefaultLayout";
 
 // Sub-Components
 

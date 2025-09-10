@@ -14,16 +14,16 @@ mac:
   target:
     - dmg
   artifactName: "elseware-games-launcher-${version}.${ext}"  # produces elseware-games-launcher-1.0.0.dmg
-  icon: build/icon.icns   # Mac icon
+  icon: src/assets/brand/icons/icon.icns   # Mac icon
 
 win:
   target:
     - nsis
   artifactName: "elseware-games-launcher-${version}-setup.${ext}"  # e.g., elseware-games-launcher-1.0.0-setup.exe
-  icon: build/icon.ico    # Windows icon
+  icon: src/assets/brand/icons/icon.ico    # Windows icon
 
 linux:
   target:
     - AppImage
   artifactName: "elseware-games-launcher-${version}.${ext}"  # e.g., elseware-games-launcher-1.0.0.AppImage
-  icon: build/icons       # Folder with PNG icons
+  icon: src/assets/brand/icons/icons       # Folder with PNG icons

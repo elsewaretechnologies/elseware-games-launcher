@@ -7,7 +7,7 @@ import { Layout, Content, ContentArea } from "elseware-ui";
 
 // Components
 import GenericLayout from "./GenericLayout";
-import Sidebar from "../components/Sidebar";
+import CustomSidebar from "../components/custom-sidebar/CustomSidebar";
 import CustomHeader from "../components/custom-header/CustomHeader";
 
 // Sub-Components
@@ -19,7 +19,7 @@ function DefaultLayout({ children }) {
     <GenericLayout>
       <Layout>
         <div className="flex flex-row">
-          <Sidebar />
+          <CustomSidebar />
 
           {/* Content */}
           <Content>
