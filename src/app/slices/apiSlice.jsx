@@ -1,8 +1,10 @@
 import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from "./authSlice";
 
+const backendURL = import.meta.env.VITE_SERVER_MASTER;
+
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:1111",
+  baseUrl: backendURL,
   credentials: "include",
   prepareHeaders: (headers) => {
     const token = localStorage.getItem("token");

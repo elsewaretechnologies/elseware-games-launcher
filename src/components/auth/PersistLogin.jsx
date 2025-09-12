@@ -17,6 +17,8 @@ import { selectCurrentToken } from "../../app/slices/authSlice";
 // Data / Images / Icons
 import { AiOutlineLoading } from "react-icons/ai";
 
+const env = import.meta.env.VITE_NODE_ENV;
+
 function PersistLogin() {
   const [persist] = usePersist();
   const token = useSelector(selectCurrentToken);
@@ -30,7 +32,7 @@ function PersistLogin() {
   let forceRun = true;
 
   useEffect(() => {
-    if (effectRun.current === true || process.env.NODE_ENV !== "development" || forceRun) {
+    if (effectRun.current === true || env !== "development" || forceRun) {
       const verifyRefreshToken = async () => {
         console.log("Verifying refresh token");
 

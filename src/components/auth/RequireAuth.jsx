@@ -14,6 +14,7 @@ import { setCredentials } from "../../app/slices/authSlice";
 // Sub-Components
 
 // Data / Images / Icons
+const authURL = import.meta.env.VITE_CLIENT_AUTH;
 
 function RequireAuth({ allowedRoles }) {
   const dispatch = useDispatch();
@@ -34,9 +35,6 @@ function RequireAuth({ allowedRoles }) {
 
   // Check if the user has the necessary roles to access the route
   const isAuthorized = roles.some((role) => allowedRoles.includes(role));
-
-  // Authentication base URL from environment variables
-  const authURL = process.env.REACT_APP_CLIENT_AUTH;
 
   // Full current page URL (used for redirect_uri)
   const currentUrl = window.location.href;

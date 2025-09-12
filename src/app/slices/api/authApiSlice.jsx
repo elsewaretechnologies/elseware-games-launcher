@@ -6,6 +6,22 @@ const AUTH_URL = "/api/v1/auth";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    login: builder.mutation({
+      query: (data) => ({
+        url: `${AUTH_URL}/login`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    googleLogin: builder.mutation({
+      query: (data) => ({
+        url: `${AUTH_URL}/googleLogin`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+
     sendLogout: builder.mutation({
       query: () => ({
         url: `${AUTH_URL}/logout`,
@@ -41,19 +57,12 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
-
-    updatePassword: builder.mutation({
-      query: (data) => ({
-        url: `${AUTH_URL}/updatePassword`,
-        method: "PATCH",
-        body: data,
-      }),
-    }),
   }),
 });
 
 export const {
+  useLoginMutation,
+  useGoogleLoginMutation,
   useSendLogoutMutation,
   useRefreshMutation,
-  useUpdatePasswordMutation,
 } = authApiSlice;

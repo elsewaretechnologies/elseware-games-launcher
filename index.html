@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
+      content="
+        default-src 'self';
+        script-src 'self' https://accounts.google.com;
+        connect-src 'self' http://localhost:1111 https://accounts.google.com https://www.googleapis.com;
+        img-src 'self' https://res.cloudinary.com; 
+        style-src 'self' 'unsafe-inline';
+        frame-src 'self' https://accounts.google.com;
+      "
     />
     <title>elseware Games Launcher</title>
   </head>
