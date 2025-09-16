@@ -25,7 +25,7 @@ function DefaultLayout({ children }) {
           <Content>
             <CustomHeader />
             <ContentArea>
-              <div className="pl-[310px] pt-[80px]">{children}</div>
+              <div className="pl-[310px] pt-[80px]"><div className="p-3">{children}</div></div>
             </ContentArea>
           </Content>
         </div>
