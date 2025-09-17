@@ -69,3 +69,20 @@ input, textarea {
   user-select: text;
 }
 
+/* Scroller */
+/* ::-webkit-scrollbar {
+  width: 0px;
+} */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #00171d;
+}
+::-webkit-scrollbar-thumb {
+  background: #167d0f;
+  border-radius: 10px;
+}
+

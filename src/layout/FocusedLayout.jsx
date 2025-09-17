@@ -16,10 +16,10 @@ function FocusedLayout({ children }) {
   return (
     <GenericLayout>
       <Layout>
-          {/* Content */}
-          <Content styles="flex justify-center items-center h-screen">
-              <div>{children}</div>
-          </Content>
+        {/* Content */}
+        <Content styles="flex justify-center items-center h-screen">
+          <div>{children}</div>
+        </Content>
       </Layout>
     </GenericLayout>
   );

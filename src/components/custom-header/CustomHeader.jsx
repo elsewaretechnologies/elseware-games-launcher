@@ -22,11 +22,10 @@ function CustomHeader() {
 
   return (
     <div
-      className="right-0 fixed z-10 px-3 py-3 bg-primary-500 border-b border-b-secondary-800/60"
-      style={{ width: "calc(100vw - 300px)" }}
+      className="right-0 fixed z-10 px-3 py-3 bg-primary-500 border-b border-b-secondary-800/60 w-full"
     >
-      <div className="flex flex-row items-center justify-between text-gray-500">
-        <div>Support</div>
+      <div className="flex flex-row items-center justify-end text-gray-500">
+        
         <div>
           {!id ? (
             <Button
